@@ -1,0 +1,19 @@
+import sys
+from awsglue.transforms import *
+from awsglue.utils import getResolvedOptions
+from pyspark.context import SparkContext
+from awsglue.context import GlueContext
+from awsglue.job import Job
+glueContext = GlueContext(SparkContext.getOrCreate())
+
+nesteddf = glueContext.create_dynamic_frame.from_catalog(database="nested-mysql-db", table_name="nested_json")
+nesteddf.printSchema()
+
+df= nesteddf.relationalize("root", "s3://json-format-data-bucket/")
+
+df.keys()
+
+#dict_keys(['root', 'root_Buildings'])
+
+fullframe=df.select('root_Buildings.val.Tenents')
+fullframe.toDF().show()

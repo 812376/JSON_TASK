@@ -1,0 +1,19 @@
+{
+  "version": "15.0.0",
+  "files": {
+    "a05f0b648221d252474d5d5d9f96b735d076337ef7fc162d18035c4d61d71523": {
+      "source": {
+        "path": "RdsConnectStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "a05f0b648221d252474d5d5d9f96b735d076337ef7fc162d18035c4d61d71523.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
